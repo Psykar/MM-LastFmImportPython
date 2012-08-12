@@ -17,6 +17,6 @@ End Sub
 
 Sub LastFmImportPython()
 	Dim oShell : Set oShell = CreateObject( "WScript.Shell" )
-	Dim file : file = SDB.ScriptsPath&"LastFmImportPython\LastFmImportPython.py"
-	oShell.Run("python "&file)
+	Dim file : file = """"&SDB.ScriptsPath&"LastFmImportPython\LastFmImportPython.exe"""
+	oShell.Run(file)
 End Sub

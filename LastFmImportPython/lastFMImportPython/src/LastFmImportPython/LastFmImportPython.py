@@ -9,6 +9,7 @@ import codecs
 from multiprocessing.pool import ThreadPool, TimeoutError
 import time
 import logging
+import sys
 
 # define IUNICODE collation function
 def iUnicodeCollate(s1, s2):
@@ -178,7 +179,7 @@ class lastFmImport(object):
         SDB = win32com.client.Dispatch("SongsDB.SDBApplication")
         
         self.SDB = SDB
-        self.scriptPath = os.path.join(SDB.ScriptsPath, "LastFmImport")
+        self.scriptPath = os.path.join(SDB.ScriptsPath, "LastFmImportPython")
         self.statusBar = SDB.Progress
         success = False
         
@@ -219,6 +220,7 @@ class lastFmImport(object):
             # No need to join as we don't *really* care about the data we get
             # back any more :P
             logging.debug("Threads Closed.")
+            del(self.statusBar)
             
 #        lastFmCollection = playCollection(lastFmData)        
         dbData = self.getDbDetails()
@@ -503,4 +505,5 @@ if __name__ == '__main__':
     except ManualCancel, e:
         logging.debug("Script was cancelled manually")
         pass
-    exit(0)
+    
+    sys.exit(0)
