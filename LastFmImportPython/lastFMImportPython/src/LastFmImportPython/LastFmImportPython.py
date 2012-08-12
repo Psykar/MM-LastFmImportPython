@@ -8,6 +8,7 @@ import os
 import codecs
 from multiprocessing.pool import ThreadPool, TimeoutError
 import time
+import logging
 
 # define IUNICODE collation function
 def iUnicodeCollate(s1, s2):
@@ -108,7 +109,7 @@ class lastFmImport(object):
     
     def displayError(self, exception):
         SDB = self.SDB
-        #print exception
+        logging.debug("Got exception: %s", exception)
         SDB.MessageBox("We encountered an error:\n%s" % exception, 1, [4])
     
     def displayResult(self, results):
@@ -116,6 +117,10 @@ class lastFmImport(object):
         SDB.MessageBox("Results:\n%s" % results, 2, [4])
         
     def setOptions(self):
+        loggingPath = os.path.join(self.scriptPath, 'Log.txt')
+        # TODO Look at this before rollout
+        logging.basicConfig(filename=loggingPath, level=logging.DEBUG, 
+                            format='%(asctime)s: %(message)s')
         optionsPath = os.path.join(self.scriptPath, 'Options')
         options = shelve.open(optionsPath)
         SDB = self.SDB
@@ -197,8 +202,8 @@ class lastFmImport(object):
                 except ManualCancel:
                     raise
                 except PullError, e:
-                    #print "We got an exception: %s" % type(getattr(e, 'orig_exception',''))
-                    #print "Dates we got: %s -> %s" % (e.earliest_date, e.latest_date)
+                    logging.warning("We got an exception: %s",  
+                                    type(getattr(e, 'orig_exception','')))
                     pass
                 else:
                     success = True
@@ -207,19 +212,13 @@ class lastFmImport(object):
             # raises an Exception in a funny way? (if the exception doesn't 
             # call __init__ of  Exception)
             self.statusBar.Text = "Terminating - cleaning up."
-            #print "Terminating ",
-            #self.pool.terminate()
-            #self.pool2.terminate()
             # Not strictly needed, but probably a good idea
-            #print "Closing ",
+            logging.debug("Closing threads.")
             self.pool.close()
             self.pool2.close()
             # No need to join as we don't *really* care about the data we get
             # back any more :P
-            #print "Joining....",
-            #self.pool.join()
-            #self.pool2.join()
-            #print "Done"
+            logging.debug("Threads Closed.")
             
 #        lastFmCollection = playCollection(lastFmData)        
         dbData = self.getDbDetails()
@@ -253,7 +252,7 @@ class lastFmImport(object):
         
         
     def updateDb(self, dbData, lastFmData):
-        #print "Beginning matching effort..."
+        logging.debug("Starting matches")
         updated = 0
         updatedDate = 0
         updatedCount = 0
@@ -277,7 +276,7 @@ class lastFmImport(object):
                     if album is None:
                         # Try just updating the first one...?
                         #if len(dbData[track]) > 1:
-                            #print 'We are updating %s tracks on different albums' % len(dbData[track])
+                        logging.debug('We are updating %s tracks on different albums', len(dbData[track]))
                         matchedWithoutAlbum = matchedWithoutAlbum + 1
                         album = next(dbData[track].iterkeys())
                         # We also need to see if this album existed in other lastFM Data and combine their data!
@@ -312,10 +311,7 @@ class lastFmImport(object):
                         nonMatchedList.append(('Match failed on: Album',track))
             else:
                 nonMatchedList.append(('Match failed on: Artist/trackname',track))
-        
-        conn.commit()
-        conn.close()
-        
+
         fileObj = open(os.path.join(self.scriptPath, 'updated.txt'),mode='w')
         fileObj.writelines([str(x)+'\n' for x in updateList])
         fileObj.close()
@@ -328,7 +324,9 @@ class lastFmImport(object):
                "Matched without album: %s\nUnmatched: %s\nTotal rows changed: %s" 
                % (updated, updatedDate, updatedCount, matches,
                   matchedWithoutAlbum, len(nonMatchedList), conn.total_changes))
-        #print resultStr
+        conn.commit()
+        conn.close()        
+        logging.info(resultStr)
         self.displayResult(resultStr)
     
     def getLastFmDetails(self):
@@ -339,7 +337,7 @@ class lastFmImport(object):
         path = os.path.join(self.scriptPath, 'Cache')
         # writeback is required as we are using mutable objects inside the 
         # dict
-        #print path
+        logging.debug('Reading existing cache from %s', path)
         shelf = shelve.open(path, writeback=True)
         earliest_date = shelf.get('earliest_date')
         latest_date = shelf.get('latest_date')
@@ -353,7 +351,7 @@ class lastFmImport(object):
             earliest_date = str(int(earliest_date) + padding)
         if latest_date:
             latest_date = str(int(latest_date) - padding)
-        #print "Excluding between dates %s and %s" % (earliest_date, latest_date)
+        logging.debug("Excluding between dates %s and %s", earliest_date, latest_date)
         tmp_earliest_date1 = tmp_latest_date1 = tmp_earliest_date2 = tmp_latest_date2 = None
         try:
             if earliest_date < latest_date:
@@ -416,7 +414,6 @@ class lastFmImport(object):
         timeout = limit
         api_key = 'daadfc9c6e9b2c549527ccef4af19adb'
         
-        #print self.SDB.Registry.OpenKey("LastFMImport", False)
         api = lastfm.Api(api_key)
         user = api.get_user(self.username)
         
@@ -424,7 +421,7 @@ class lastFmImport(object):
         statusBar = self.statusBar
         statusBar.Text = "Loading Initial Recent Tracks"
         
-        #print "Pulling tracks between %s - %s" % (date_from, date_to)
+        logging.debug("Pulling tracks between %s - %s", date_from, date_to)
         result = self.pool.apply_async(user.get_recent_tracks_pages, [limit], 
                         {'date_from':date_from, 'date_to':date_to})
         try:
@@ -449,10 +446,10 @@ class lastFmImport(object):
         statusBar.Text = "Loading pages: %s / %s " % (statusBar.Value, statusBar.MaxValue)
         
         def getPage(page):
-            #print "Getting page %s..." % page
+            logging.debug("Getting page %s...", page)
             result = user.get_recent_tracks(limit=limit, date_from=date_from, 
                                date_to=date_to, page=page)
-            #print "... done with page %s" % page
+            logging.debug("... done with page %s", page)
             return result
 
         tracksIter = self.pool.imap(getPage, range(1,numPages+1))
@@ -504,5 +501,6 @@ if __name__ == '__main__':
         #cProfile.run('importer.run()', sort='time')
         importer.run()
     except ManualCancel, e:
-        #print "Script was cancelled manually"
+        logging.debug("Script was cancelled manually")
         pass
+    exit(0)
