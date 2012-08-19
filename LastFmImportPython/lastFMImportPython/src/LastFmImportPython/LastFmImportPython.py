@@ -212,7 +212,7 @@ class lastFmImport(object):
             # I'd love to terminate but it seem to freeze if the child
             # raises an Exception in a funny way? (if the exception doesn't 
             # call __init__ of  Exception)
-            self.statusBar.Text = "Terminating - cleaning up."
+            self.statusBar.Text = "Closing last.fm threads, about to start updating."
             # Not strictly needed, but probably a good idea
             logging.debug("Closing threads.")
             self.pool.close()
@@ -220,8 +220,6 @@ class lastFmImport(object):
             # No need to join as we don't *really* care about the data we get
             # back any more :P
             logging.debug("Threads Closed.")
-            del(self.statusBar)
-            
 #        lastFmCollection = playCollection(lastFmData)        
         dbData = self.getDbDetails()
         dbCollection = playCollection(dbData)
@@ -348,7 +346,7 @@ class lastFmImport(object):
         # missed tracks at the end.
         # For now, approx 1 week - 60seconds * 60*24*7
         #padding = 60*60*24*7
-        padding = 60*60*24*7
+        padding = 60*60*24
         if earliest_date:
             earliest_date = str(int(earliest_date) + padding)
         if latest_date:
@@ -501,9 +499,14 @@ if __name__ == '__main__':
     importer = lastFmImport()
     try:
         #cProfile.run('importer.run()', sort='time')
-        importer.run()
+        try:
+            importer.run()
+        finally:
+            del(importer.statusBar)
     except ManualCancel, e:
         logging.debug("Script was cancelled manually")
         pass
+    except Exception, e:
+        logging.error("Exception encountered: %s", e)
     
     sys.exit(0)
