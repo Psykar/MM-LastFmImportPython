@@ -24,7 +24,7 @@ Trixmoto - for mmip packaging of normal scripts, had me stumped for a while ther
 
 
 * Download:
-http://psykar.com/scripts/[/url]
+http://psykar.com/scripts/
 
 
 I *VERY STRONGLY* recommend a database backup before you try this.
