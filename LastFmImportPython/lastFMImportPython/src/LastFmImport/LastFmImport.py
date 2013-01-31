@@ -10,6 +10,8 @@ from multiprocessing.pool import ThreadPool, TimeoutError
 import time
 import logging
 import sys
+from csv import DictWriter
+import argparse
 
 # define IUNICODE collation function
 def iUnicodeCollate(s1, s2):
@@ -117,75 +119,82 @@ class lastFmImport(object):
         SDB = self.SDB
         SDB.MessageBox("Results:\n%s" % results, 2, [4])
         
-    def setOptions(self):
+    def setOptions(self, args):
+        if not os.path.exists(self.scriptPath):
+            os.makedirs(self.scriptPath)
         loggingPath = os.path.join(self.scriptPath, 'Log.txt')
         # TODO Look at this before rollout
         logging.basicConfig(filename=loggingPath, level=logging.DEBUG, 
                             format='%(asctime)s: %(message)s')
         optionsPath = os.path.join(self.scriptPath, 'Options')
         options = shelve.open(optionsPath)
-        SDB = self.SDB
-        form = SDB.UI.NewForm
-        form.Caption = "LastFm Play Importer"
-        form.BorderStyle = 3
-        form.FormPosition = 4
-        form.StayOnTop = True
-        form.Common.SetRect(0,0,260,140)
-        #iBorderWidth = frmDialog.Common.Width - frmDialog.Common.ClientWidth
-        #iBorderHeight = frmDialog.Common.Height - frmDialog.Common.ClientHeight
-        #frmDialog.Common.SetRect (100, 100, 570 + iBorderWidth, 524 + iBorderHeight)
-        #frmDialog.Common.MinWidth = 570 + iBorderWidth
-        #frmDialog.Common.MinHeight = 522 + iBorderHeight
-        #frmDialog.FormPosition = mmFormScreenCenter
-        label1 = SDB.UI.NewLabel(form)
-        label1.Caption = "Username"
-        label1.Common.SetRect(20,10,100,20)
-        
-        
-        edit1 = SDB.UI.NewEdit(form)
-        edit1.Text = options.get('username','')
-        edit1.Common.SetRect(140,10,100,20)
-        
-        
-        check1 = SDB.UI.NewCheckBox(form)
-        check1.Caption = "Update played times?"
-        check1.Checked = options.get('update_played_times', False)
-        check1.Common.SetRect(20,40,200,20)
-        
-        
-        button1 = SDB.UI.NewButton(form)
-        button1.Caption = "&Go!"
-        button1.Common.SetRect(50,80,60,20)
-        button1.ModalResult = 1
-        button1.Default = True
-        
-        button2 = SDB.UI.NewButton(form)
-        button2.Caption = "&Cancel"
-        button2.Common.SetRect(150,80,60,20)
-        button2.ModalResult = 2
-        button2.Cancel = True
-        
-        if form.ShowModal() != 1:
-            return False
-        # Get options
-        options['username'] = edit1.Text
-        options['update_played_times'] = check1.Checked
+        if args.interactive:
+            SDB = self.SDB
+            form = SDB.UI.NewForm
+            form.Caption = "LastFm Play Importer"
+            form.BorderStyle = 3
+            form.FormPosition = 4
+            form.StayOnTop = True
+            form.Common.SetRect(0,0,260,140)
+            #iBorderWidth = frmDialog.Common.Width - frmDialog.Common.ClientWidth
+            #iBorderHeight = frmDialog.Common.Height - frmDialog.Common.ClientHeight
+            #frmDialog.Common.SetRect (100, 100, 570 + iBorderWidth, 524 + iBorderHeight)
+            #frmDialog.Common.MinWidth = 570 + iBorderWidth
+            #frmDialog.Common.MinHeight = 522 + iBorderHeight
+            #frmDialog.FormPosition = mmFormScreenCenter
+            label1 = SDB.UI.NewLabel(form)
+            label1.Caption = "Username"
+            label1.Common.SetRect(20,10,100,20)
+            
+            
+            edit1 = SDB.UI.NewEdit(form)
+            edit1.Text = options.get('username','')
+            edit1.Common.SetRect(140,10,100,20)
+            
+            
+            check1 = SDB.UI.NewCheckBox(form)
+            check1.Caption = "Update played times?"
+            check1.Checked = options.get('update_played_times', False)
+            check1.Common.SetRect(20,40,200,20)
+            
+            
+            button1 = SDB.UI.NewButton(form)
+            button1.Caption = "&Go!"
+            button1.Common.SetRect(50,80,60,20)
+            button1.ModalResult = 1
+            button1.Default = True
+            
+            button2 = SDB.UI.NewButton(form)
+            button2.Caption = "&Cancel"
+            button2.Common.SetRect(150,80,60,20)
+            button2.ModalResult = 2
+            button2.Cancel = True
+            
+            if form.ShowModal() != 1:
+                return False
+            # Get options
+            options['username'] = edit1.Text
+            options['update_played_times'] = check1.Checked
+        else:
+            if not options:
+                raise KeyError("Must run once interactively first.")
         self.username = options['username']
         self.update_played_times = options['update_played_times']
+        
         options.close()
         return True
         
-    def run(self):
+    def run(self, args):
         SDB = win32com.client.Dispatch("SongsDB.SDBApplication")
         
         self.SDB = SDB
-        self.scriptPath = os.path.join(SDB.ScriptsPath, "LastFmImportPython")
+        self.scriptPath = os.path.join(SDB.ScriptsPath, "LastFmImport")
         self.statusBar = SDB.Progress
         success = False
         
         # Set the username and update played times options, exit if cancel
         # was pressed
-        if not self.setOptions():
+        if not self.setOptions(args):
             return
         
         try:
@@ -224,7 +233,7 @@ class lastFmImport(object):
         dbData = self.getDbDetails()
         dbCollection = playCollection(dbData)
         
-        self.updateDb(dbCollection, lastFmCollection)
+        return self.updateDb(dbCollection, lastFmCollection)
     
     def getDbDetails(self):
         try:
@@ -265,7 +274,9 @@ class lastFmImport(object):
         statusBar.Value = 0
 
         updateList = []
+        updateListKeys = set()
         nonMatchedList = []
+        nonMatchedListKeys = set()
         conn = sqlite3.connect(self.SDB.Database.Path)
         conn.create_collation('IUNICODE', iUnicodeCollate)
         for track, albums in lastFmData.iteritems():
@@ -304,20 +315,52 @@ class lastFmImport(object):
                             query.append('LastTimePlayed=:played_on')                      
                         if thisUpdated:
                             updated = updated + 1
-                            updateList.append((newTrack,track,album, dbData[track][album]))
+                            updateDict = newTrack.copy()
+                            updateDict.update(track.__dict__)
+                            updateDict['lastFmAlbum'] = album
+                            updateDict['dbData'] = dbData[track][album]
+                            updateList.append(updateDict)
+                            updateListKeys.update(updateDict.keys())
+                            
                             query = "UPDATE Songs SET " + ','.join(query) + " WHERE ID=:id"
                             conn.execute(query, newTrack)
                     else:
-                        nonMatchedList.append(('Match failed on: Album',track))
+                        nonMatchedDict = track.__dict__.copy()
+                        nonMatchedDict['reason'] = 'Match failed on Album'
+                        nonMatchedList.append(nonMatchedDict)
+                        nonMatchedListKeys.update(nonMatchedDict.keys())
             else:
-                nonMatchedList.append(('Match failed on: Artist/trackname',track))
+                nonMatchedDict = track.__dict__.copy()
+                nonMatchedDict['reason'] = 'Match failed on Artist / trackname'
+                nonMatchedList.append(nonMatchedDict)
+                nonMatchedListKeys.update(nonMatchedDict.keys())
 
-        fileObj = open(os.path.join(self.scriptPath, 'updated.txt'),mode='w')
-        fileObj.writelines([str(x)+'\n' for x in updateList])
+        fileObj = codecs.open(os.path.join(self.scriptPath, 'updated.txt'),mode='w', encoding='utf8', errors='ignore')
+        writer = DictWriter(fileObj, updateListKeys)
+        writer.writeheader()
+        for row in updateList:
+            writer.writerow(row)
         fileObj.close()
         
-        fileObj = codecs.open(os.path.join(self.scriptPath, 'unMatched.txt'),mode='w')
-        fileObj.writelines([str(x)+'\n' for x in nonMatchedList])
+        fileObj = codecs.open(os.path.join(self.scriptPath, 'unMatched.txt'),mode='w', encoding='utf8', errors='ignore')
+        writer = DictWriter(fileObj, nonMatchedListKeys)
+        writer.writeheader()
+        
+        
+        
+        for row in nonMatchedList:
+            try:
+                writer.writerow({
+                             k:v.encode('utf8', errors='ignore') if isinstance(v, basestring) 
+                             else v 
+                             for k,v in row.iteritems()
+                             })
+            except:
+                writer.writerow({
+                             k:v.encode('ascii', errors='ignore') if isinstance(v, basestring) 
+                             else v 
+                             for k,v in row.iteritems()
+                             })
         fileObj.close()
     
         resultStr = ("Updated: %s\nUpdatedDates: %s\nUpdatedCounts: %s\nMatches: %s\n"
@@ -327,7 +370,7 @@ class lastFmImport(object):
         conn.commit()
         conn.close()        
         logging.info(resultStr)
-        self.displayResult(resultStr)
+        return resultStr
     
     def getLastFmDetails(self):
         ''' 
@@ -496,17 +539,30 @@ class ManualCancel(ExceptionWithDates):
     pass
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(
+                    description='MediaMonkey Last.FM Playcount Importer')
+    parser.add_argument(
+                        '-n', '--interactive', action='store_false',
+                        help='If set, will run non-interactively and will not'
+                            ' prompt for options')
+    args = parser.parse_args()
+    
     importer = lastFmImport()
     try:
         #cProfile.run('importer.run()', sort='time')
         try:
-            importer.run()
+            resultStr = importer.run(args=args)
+            if resultStr:
+                importer.displayResult(resultStr)
         finally:
             del(importer.statusBar)
     except ManualCancel, e:
         logging.debug("Script was cancelled manually")
         pass
     except Exception, e:
-        logging.error("Exception encountered: %s", e)
+        logging.error("Exception encountered: %s: %s" % (type(e), e))
+        importer.displayResult("Error was encountered,"
+                               " rerunning will resume"
+                               " where you left off\n\n %s: %s" % (type(e), e))
     
     sys.exit(0)
