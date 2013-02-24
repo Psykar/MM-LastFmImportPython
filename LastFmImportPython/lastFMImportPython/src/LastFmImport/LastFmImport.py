@@ -10,8 +10,8 @@ from multiprocessing.pool import ThreadPool, TimeoutError
 import time
 import logging
 import sys
-from csv import DictWriter
 import argparse
+import traceback
 
 # define IUNICODE collation function
 def iUnicodeCollate(s1, s2):
@@ -336,31 +336,11 @@ class lastFmImport(object):
                 nonMatchedListKeys.update(nonMatchedDict.keys())
 
         fileObj = codecs.open(os.path.join(self.scriptPath, 'updated.txt'),mode='w', encoding='utf8', errors='ignore')
-        writer = DictWriter(fileObj, updateListKeys)
-        writer.writeheader()
-        for row in updateList:
-            writer.writerow(row)
+        writer = DictWriter().writeDict(updateList, updateListKeys, fileObj)
         fileObj.close()
         
         fileObj = codecs.open(os.path.join(self.scriptPath, 'unMatched.txt'),mode='w', encoding='utf8', errors='ignore')
-        writer = DictWriter(fileObj, nonMatchedListKeys)
-        writer.writeheader()
-        
-        
-        
-        for row in nonMatchedList:
-            try:
-                writer.writerow({
-                             k:v.encode('utf8', errors='ignore') if isinstance(v, basestring) 
-                             else v 
-                             for k,v in row.iteritems()
-                             })
-            except:
-                writer.writerow({
-                             k:v.encode('ascii', errors='ignore') if isinstance(v, basestring) 
-                             else v 
-                             for k,v in row.iteritems()
-                             })
+        writer = DictWriter().writeDict(nonMatchedList, nonMatchedListKeys, fileObj)
         fileObj.close()
     
         resultStr = ("Updated: %s\nUpdatedDates: %s\nUpdatedCounts: %s\nMatches: %s\n"
@@ -538,6 +518,27 @@ class PullError(ExceptionWithDates):
 class ManualCancel(ExceptionWithDates):
     pass
 
+class DictWriter(object):
+    def writeDict(self, dict, keys, file):
+        keyLine = u','.join(keys)
+        try:
+            file.write(keyLine)
+        except UnicodeError as e:
+            pass
+        for item in dict:
+            file.write(u'\n')
+            values = []
+            for key in keys:
+                value = item.get(key, u'')
+                if not isinstance(value, basestring):
+                    value = str(value)
+                values.append(value)
+            valuesLine = u','.join(values)
+            try:
+                file.write(valuesLine)
+            except UnicodeError as e:
+                pass
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
                     description='MediaMonkey Last.FM Playcount Importer')
@@ -560,6 +561,7 @@ if __name__ == '__main__':
         logging.debug("Script was cancelled manually")
         pass
     except Exception, e:
+        traceback.print_exc()
         logging.error("Exception encountered: %s: %s" % (type(e), e))
         importer.displayResult("Error was encountered,"
                                " rerunning will resume"

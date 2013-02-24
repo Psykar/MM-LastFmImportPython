@@ -165,4 +165,5 @@ pip-log.txt
 # SVN stuff
 .svn
 
-.mmip
+# Mediamonkey extensions
+*.mmip
