@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lfm status="ok">
+<artist>
+  <name>Metallica</name>
+  <mbid>65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab</mbid>
+  <url>http://www.last.fm/music/Metallica</url>
+  <image size="small">http://userserve-ak.last.fm/serve/34/11611283.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/11611283.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/11611283.jpg</image>
+  <streamable>1</streamable>
+  <stats>
+    <listeners>1308284</listeners>
+    <playcount>88454245</playcount>
+  </stats>
+
+  <similar>
+	    <artist>
+	  <name>Megadeth</name>
+	  <url>http://www.last.fm/music/Megadeth</url>
+	  <image size="small">http://userserve-ak.last.fm/serve/34/3538311.jpg</image>
+	  <image size="medium">http://userserve-ak.last.fm/serve/64/3538311.jpg></image>
+	  <image size="large">http://userserve-ak.last.fm/serve/126/3538311.jpg</image>
+	</artist>
+    <artist>
+	  <name>Pantera</name>
+	  <url>http://www.last.fm/music/Pantera</url>
+	  <image size="small">http://userserve-ak.last.fm/serve/34/41104.jpg</image>
+	  <image size="medium">http://userserve-ak.last.fm/serve/64/41104.jpg></image>
+	  <image size="large">http://userserve-ak.last.fm/serve/126/41104.jpg</image>
+	</artist>
+    <artist>
+	  <name>Slayer</name>
+	  <url>http://www.last.fm/music/Slayer</url>
+	  <image size="small">http://userserve-ak.last.fm/serve/34/5063959.jpg</image>
+	  <image size="medium">http://userserve-ak.last.fm/serve/64/5063959.jpg></image>
+	  <image size="large">http://userserve-ak.last.fm/serve/126/5063959.jpg</image>
+	</artist>
+    <artist>
+	  <name>Iron Maiden</name>
+	  <url>http://www.last.fm/music/Iron+Maiden</url>
+	  <image size="small">http://userserve-ak.last.fm/serve/34/2952305.jpg</image>
+	  <image size="medium">http://userserve-ak.last.fm/serve/64/2952305.jpg></image>
+	  <image size="large">http://userserve-ak.last.fm/serve/126/2952305.jpg</image>
+	</artist>
+    <artist>
+	  <name>Anthrax</name>
+	  <url>http://www.last.fm/music/Anthrax</url>
+	  <image size="small">http://userserve-ak.last.fm/serve/34/6680133.jpg</image>
+	  <image size="medium">http://userserve-ak.last.fm/serve/64/6680133.jpg></image>
+	  <image size="large">http://userserve-ak.last.fm/serve/126/6680133.jpg</image>
+	</artist>
+  </similar>
+      <bio>
+    <published>Sat, 4 Apr 2009 11:05:07 +0000</published>
+    <summary><![CDATA[Metallica is an American heavy metal band that formed in 1981 in Los Angeles. Founded when drummer Lars Ulrich posted an advertisement in a local newspaper, Metallica's line-up has primarily consisted of Ulrich, rhythm guitarist and vocalist James Hetfield, and lead guitarist Kirk Hammett, while going through a number of bassists. Currently, the spot is held by Robert Trujillo.  Metallica's early releases included fast tempos, instrumentals, and aggressive musicianship that placed them as one of the &quot;big four&quot; of the thrash metal subgenre alongside Slayer, Megadeth, and Anthrax.]]></summary>
+    <content><![CDATA[Metallica is an American heavy metal band that formed in 1981 in Los Angeles. Founded when drummer Lars Ulrich posted an advertisement in a local newspaper, Metallica's line-up has primarily consisted of Ulrich, rhythm guitarist and vocalist James Hetfield, and lead guitarist Kirk Hammett, while going through a number of bassists. Currently, the spot is held by Robert Trujillo.  Metallica's early releases included fast tempos, instrumentals, and aggressive musicianship that placed them as one of the &quot;big four&quot; of the thrash metal subgenre alongside Slayer, Megadeth, and Anthrax.[1] The band earned a growing fan base in the underground music community and critical acclaim, with the 1986 release Master of Puppets described as one of the most influential and &quot;heavy&quot; thrash metal albums. The band achieved substantial commercial success with Metallica (1991), which debuted at number one on the Billboard 200. With this release the band expanded its musical direction resulting in an album that appealed to a more mainstream audience.  In 2000, Metallica was among several artists who filed a lawsuit against Napster for sharing the band's copyright-protected material for free without the band members' consent.[2] A settlement was reached, and Napster became a pay-to-use service. Despite reaching number one on the Billboard 200, the release of St. Anger alienated many fans with the exclusion of guitar solos and the &quot;steel-sounding&quot; snare drum. A film titled Some Kind of Monster documented the recording process of St. Anger.  Metallica has released nine studio albums, two live albums, two EPs, twenty-two music videos, and forty-four singles. The band has won nine Grammy Awards, and has had five consecutive albums debut at number one on the Billboard 200, making Metallica the only band ever to do so.[3] The band's 1991 album, Metallica, has sold over 15 million copies in the United States, and 22 million copies worldwide, which makes it the 25th-highest-selling album in the country.[4] The band has sold an estimated 100 million records worldwide as of the release of their latest album Death Magnetic. As of September 2008, Metallica is the fourth highest-selling music artist since the SoundScan era began tracking sales on May 25, 1991, selling a total of 51,136,000 albums in the United States alone.]]></content>
+  </bio>
+  </artist></lfm>

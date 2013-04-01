@@ -673,10 +673,7 @@ class Api(object):
             delta = delta.seconds + float(delta.microseconds)/1000000
             if delta < Api.FETCH_INTERVAL:
                 time.sleep(Api.FETCH_INTERVAL - delta)
-            try:
-                url_data = opener.open(url, data).read()
-            except HTTPException:
-                raise OperationFailedError("We got a HTTP Error")
+            url_data = opener.open(url, data).read()
             self._last_fetch_time = datetime.now()
         return url_data
 
@@ -773,10 +770,23 @@ class Api(object):
 
     def _check_xml(self, xml):
         data = None
-        try:
-            data = ElementTree.XML(xml)
-        except SyntaxError, e:
-            raise OperationFailedError("Error in parsing XML: %s" % e)
+        prev_position = None
+        # There are some invalid XML characters that last.fm serves
+        # us with occasionally.
+        # We attempt to strip them out until the XML is valid.
+        while data is None:
+            try:
+                data = ElementTree.XML(xml)
+            except SyntaxError, e:
+                if getattr(e, 'position') and prev_position != e.position:
+                    prev_position = e.position
+                    line, col = e.position
+                    invalid_char = xml.split('\n')[line -1][col]
+                    xml = xml.replace(invalid_char, '')
+                else:
+                    error = OperationFailedError("Error in parsing XML: %s" % e)
+                    error.xml = xml
+                    raise error
         if data.get('status') != "ok":
             code = int(data.find("error").get('code'))
             message = data.findtext('error')

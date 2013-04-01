@@ -1,0 +1,1433 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>lastfm.artist.Artist</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="lastfm-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://code.google.com/p/python-lastfm/">python-lastfm</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="lastfm-module.html">Package&nbsp;lastfm</a> ::
+        <a href="lastfm.artist-module.html" onclick="show_private();">Module&nbsp;artist</a> ::
+        Class&nbsp;Artist
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="lastfm.artist.Artist-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Artist</h1><p class="nomargin-top"><span class="codelink"><a href="lastfm.artist-pysrc.html#Artist">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+                  object --+    
+                           |    
+             <a href="lastfm.base.LastfmBase-class.html">base.LastfmBase</a> --+
+                               |
+                  object --+   |
+                           |   |
+  <a href="lastfm.mixins.cacheable.Cacheable-class.html">mixins.cacheable.Cacheable</a> --+
+                               |
+                  object --+   |
+                           |   |
+    <a href="lastfm.mixins.sharable.Sharable-class.html">mixins.sharable.Sharable</a> --+
+                               |
+                  object --+   |
+                           |   |
+  <a href="lastfm.mixins.shoutable.Shoutable-class.html">mixins.shoutable.Shoutable</a> --+
+                               |
+                  object --+   |
+                           |   |
+<a href="lastfm.mixins.searchable.Searchable-class.html">mixins.searchable.Searchable</a> --+
+                               |
+                  object --+   |
+                           |   |
+    <a href="lastfm.mixins.taggable.Taggable-class.html">mixins.taggable.Taggable</a> --+
+                               |
+                              <strong class="uidshort">Artist</strong>
+</pre>
+
+<hr />
+<p>A class representing an artist.</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="lastfm.artist.Artist-class.html#init" class="summary-sig-name">init</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">api</span>,
+        <span class="summary-sig-arg">name</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">mbid</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">url</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">image</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">streamable</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">stats</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">similar</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">top_tags</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">bio</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">subject</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Create an Artist object by providing all the data related to it.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lastfm.artist-pysrc.html#Artist.init">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code class="link">list</code> of <a 
+      href="lastfm.artist.Artist-class.html" class="link">Artist</a></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="lastfm.artist.Artist-class.html#get_similar" class="summary-sig-name">get_similar</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">limit</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Get the artists similar to this artist.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lastfm.artist-pysrc.html#Artist.get_similar">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="lastfm.artist.Artist-class.html#_default_params" class="summary-sig-name" onclick="show_private();">_default_params</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">extra_params</span>=<span class="summary-sig-default"><code class="variable-group">{</code><code class="variable-group">}</code></span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lastfm.artist-pysrc.html#Artist._default_params">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_fill_info"></a><span class="summary-sig-name">_fill_info</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lastfm.artist-pysrc.html#Artist._fill_info">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="lastfm.artist.Artist-class.html#__hash__" class="summary-sig-name">__hash__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      hash(x)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lastfm.artist-pysrc.html#Artist.__hash__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__eq__"></a><span class="summary-sig-name">__eq__</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">other</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lastfm.artist-pysrc.html#Artist.__eq__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__lt__"></a><span class="summary-sig-name">__lt__</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">other</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lastfm.artist-pysrc.html#Artist.__lt__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="lastfm.artist.Artist-class.html#__repr__" class="summary-sig-name">__repr__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      repr(x)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lastfm.artist-pysrc.html#Artist.__repr__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__init__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__str__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+<tr bgcolor="#e8f0f8" >
+  <th colspan="2" class="group-header"
+    >&nbsp;&nbsp;&nbsp;&nbsp;Inherited from <a href="lastfm.base.LastfmBase-class.html">base.LastfmBase</a></th></tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__ge__"></a><span class="summary-sig-name">__ge__</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">other</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lastfm.base-pysrc.html#LastfmBase.__ge__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__gt__"></a><span class="summary-sig-name">__gt__</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">other</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lastfm.base-pysrc.html#LastfmBase.__gt__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__le__"></a><span class="summary-sig-name">__le__</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">other</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lastfm.base-pysrc.html#LastfmBase.__le__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__ne__"></a><span class="summary-sig-name">__ne__</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">other</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lastfm.base-pysrc.html#LastfmBase.__ne__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr bgcolor="#e8f0f8" >
+  <th colspan="2" class="group-header"
+    >&nbsp;&nbsp;&nbsp;&nbsp;Inherited from <a href="lastfm.mixins.sharable.Sharable-class.html">mixins.sharable.Sharable</a></th></tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="lastfm.mixins.sharable.Sharable-class.html#share" class="summary-sig-name">share</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*args</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lastfm.decorators-pysrc.html">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr bgcolor="#e8f0f8" >
+  <th colspan="2" class="group-header"
+    >&nbsp;&nbsp;&nbsp;&nbsp;Inherited from <a href="lastfm.mixins.taggable.Taggable-class.html">mixins.taggable.Taggable</a></th></tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="lastfm.mixins.taggable.Taggable-class.html#add_tags" class="summary-sig-name">add_tags</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*args</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lastfm.decorators-pysrc.html">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="lastfm.mixins.taggable.Taggable-class.html#remove_tag" class="summary-sig-name">remove_tag</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*args</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lastfm.decorators-pysrc.html">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS METHODS ==================== -->
+<a name="section-ClassMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr bgcolor="#e8f0f8" >
+  <th colspan="2" class="group-header"
+    >&nbsp;&nbsp;&nbsp;&nbsp;Inherited from <a href="lastfm.mixins.searchable.Searchable-class.html">mixins.searchable.Searchable</a></th></tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="search"></a><span class="summary-sig-name">search</span>(<span class="summary-sig-arg">cls</span>,
+        <span class="summary-sig-arg">api</span>,
+        <span class="summary-sig-arg">search_item</span>,
+        <span class="summary-sig-arg">limit</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**kwds</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lastfm.mixins.searchable-pysrc.html#Searchable.search">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== STATIC METHODS ==================== -->
+<a name="section-StaticMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Static Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-StaticMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="lastfm.artist.Artist-class.html" class="link">Artist</a></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="lastfm.artist.Artist-class.html#get_info" class="summary-sig-name">get_info</a>(<span class="summary-sig-arg">api</span>,
+        <span class="summary-sig-arg">artist</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">mbid</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Get the data for the artist.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lastfm.artist-pysrc.html#Artist.get_info">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_fetch_data"></a><span class="summary-sig-name">_fetch_data</span>(<span class="summary-sig-arg">api</span>,
+        <span class="summary-sig-arg">artist</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">mbid</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lastfm.artist-pysrc.html#Artist._fetch_data">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="lastfm.artist.Artist-class.html#_search_yield_func" class="summary-sig-name" onclick="show_private();">_search_yield_func</a>(<span class="summary-sig-arg">api</span>,
+        <span class="summary-sig-arg">artist</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lastfm.artist-pysrc.html#Artist._search_yield_func">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_hash_func"></a><span class="summary-sig-name">_hash_func</span>(<span class="summary-sig-arg">*args</span>,
+        <span class="summary-sig-arg">**kwds</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lastfm.artist-pysrc.html#Artist._hash_func">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr bgcolor="#e8f0f8" >
+  <th colspan="2" class="group-header"
+    >&nbsp;&nbsp;&nbsp;&nbsp;Inherited from <a href="lastfm.mixins.cacheable.Cacheable-class.html">mixins.cacheable.Cacheable</a></th></tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">a new object with type S, a subtype of T</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="lastfm.mixins.cacheable.Cacheable-class.html#__new__" class="summary-sig-name">__new__</a>(<span class="summary-sig-arg">cls</span>,
+        <span class="summary-sig-arg">*args</span>,
+        <span class="summary-sig-arg">**kwds</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lastfm.mixins.cacheable-pysrc.html#Cacheable.__new__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="register"></a><span class="summary-sig-name">register</span>(<span class="summary-sig-arg">ob</span>,
+        <span class="summary-sig-arg">key</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lastfm.mixins.cacheable-pysrc.html#Cacheable.register">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr bgcolor="#e8f0f8" >
+  <th colspan="2" class="group-header"
+    >&nbsp;&nbsp;&nbsp;&nbsp;Inherited from <a href="lastfm.mixins.cacheable.Cacheable-class.html">mixins.cacheable.Cacheable</a></th></tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="_lock"></a><span class="summary-name">_lock</span> = <code title="Lock()">Lock()</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="registry"></a><span class="summary-name">registry</span> = <code title="{}"><code class="variable-group">{</code><code class="variable-group">}</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code class="link">str</code></span>
+    </td><td class="summary">
+        <a href="lastfm.artist.Artist-class.html#name" class="summary-name">name</a><br />
+      name of the artist
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code class="link">str</code></span>
+    </td><td class="summary">
+        <a href="lastfm.artist.Artist-class.html#mbid" class="summary-name">mbid</a><br />
+      MBID of the artist
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code class="link">str</code></span>
+    </td><td class="summary">
+        <a href="lastfm.artist.Artist-class.html#url" class="summary-name">url</a><br />
+      url of the artist's page
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code class="link">dict</code></span>
+    </td><td class="summary">
+        <a href="lastfm.artist.Artist-class.html#image" class="summary-name">image</a><br />
+      images of the artist
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code class="link">bool</code></span>
+    </td><td class="summary">
+        <a href="lastfm.artist.Artist-class.html#streamable" class="summary-name">streamable</a><br />
+      is the artist streamable on last.fm
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="lastfm.stats.Stats-class.html" class="link">Stats</a></span>
+    </td><td class="summary">
+        <a href="lastfm.artist.Artist-class.html#stats" class="summary-name">stats</a><br />
+      stats for the artist
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code class="link">list</code> of <a 
+      href="lastfm.artist.Artist-class.html" class="link">Artist</a></span>
+    </td><td class="summary">
+        <a href="lastfm.artist.Artist-class.html#similar" class="summary-name">similar</a><br />
+      artists similar to this artist
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="lastfm.artist.Artist-class.html" class="link">Artist</a></span>
+    </td><td class="summary">
+        <a href="lastfm.artist.Artist-class.html#most_similar" class="summary-name">most_similar</a><br />
+      artist most similar to this artist
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code class="link">list</code> of <a href="lastfm.tag.Tag-class.html"
+      class="link">Tag</a></span>
+    </td><td class="summary">
+        <a href="lastfm.artist.Artist-class.html#top_tags" class="summary-name">top_tags</a><br />
+      top tags for the artist
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="lastfm.tag.Tag-class.html" class="link">Tag</a></span>
+    </td><td class="summary">
+        <a href="lastfm.artist.Artist-class.html#top_tag" class="summary-name">top_tag</a><br />
+      top tag for the artist
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="lastfm.wiki.Wiki-class.html" class="link">Wiki</a></span>
+    </td><td class="summary">
+        <a href="lastfm.artist.Artist-class.html#bio" class="summary-name">bio</a><br />
+      biography of the artist
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="lastfm.lazylist-module.html#lazylist" 
+      class="link">lazylist</a> of <a href="lastfm.event.Event-class.html" 
+      class="link">Event</a></span>
+    </td><td class="summary">
+        <a href="lastfm.artist.Artist-class.html#events" class="summary-name">events</a><br />
+      events for the artist
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code class="link">list</code> of <a 
+      href="lastfm.album.Album-class.html" class="link">Album</a></span>
+    </td><td class="summary">
+        <a href="lastfm.artist.Artist-class.html#top_albums" class="summary-name">top_albums</a><br />
+      top albums of the artist
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="lastfm.album.Album-class.html" class="link">Album</a></span>
+    </td><td class="summary">
+        <a href="lastfm.artist.Artist-class.html#top_album" class="summary-name">top_album</a><br />
+      top album of the artist
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code class="link">list</code> of <a 
+      href="lastfm.user.User-class.html" class="link">User</a></span>
+    </td><td class="summary">
+        <a href="lastfm.artist.Artist-class.html#top_fans" class="summary-name">top_fans</a><br />
+      top fans of the artist
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="lastfm.user.User-class.html" class="link">User</a></span>
+    </td><td class="summary">
+        <a href="lastfm.artist.Artist-class.html#top_fan" class="summary-name">top_fan</a><br />
+      top fan of the artist
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code class="link">list</code> of <a 
+      href="lastfm.track.Track-class.html" class="link">Track</a></span>
+    </td><td class="summary">
+        <a href="lastfm.artist.Artist-class.html#top_tracks" class="summary-name">top_tracks</a><br />
+      top tracks of the artist
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="lastfm.track.Track-class.html" class="link">Track</a></span>
+    </td><td class="summary">
+        <a href="lastfm.artist.Artist-class.html#top_track" class="summary-name">top_track</a><br />
+      topmost track of the artist
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+<tr bgcolor="#e8f0f8" >
+  <th colspan="2" class="group-header"
+    >&nbsp;&nbsp;&nbsp;&nbsp;Inherited from <a href="lastfm.mixins.shoutable.Shoutable-class.html">mixins.shoutable.Shoutable</a></th></tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="lastfm.mixins.shoutable.Shoutable-class.html#recent_shout" class="summary-name">recent_shout</a><br />
+      recent shout for this subject
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="lastfm.mixins.shoutable.Shoutable-class.html#shouts" class="summary-name">shouts</a><br />
+      shouts for this ssubject
+    </td>
+  </tr>
+<tr bgcolor="#e8f0f8" >
+  <th colspan="2" class="group-header"
+    >&nbsp;&nbsp;&nbsp;&nbsp;Inherited from <a href="lastfm.mixins.taggable.Taggable-class.html">mixins.taggable.Taggable</a></th></tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="lastfm.mixins.taggable.Taggable-class.html#tags" class="summary-name">tags</a>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="init"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">init</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">api</span>,
+        <span class="sig-arg">name</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">mbid</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">url</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">image</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">streamable</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">stats</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">similar</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">top_tags</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">bio</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">subject</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="lastfm.artist-pysrc.html#Artist.init">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Create an Artist object by providing all the data related to it.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>api</code></strong> (<a href="lastfm.api.Api-class.html" class="link">Api</a>) - an instance of <a href="lastfm.api.Api-class.html" 
+          class="link">Api</a></li>
+        <li><strong class="pname"><code>name</code></strong> (<code class="link">str</code>) - the artist name</li>
+        <li><strong class="pname"><code>mbid</code></strong> (<code class="link">str</code>) - MBID of the artist</li>
+        <li><strong class="pname"><code>url</code></strong> (<code class="link">str</code>) - URL of the artist on last.fm</li>
+        <li><strong class="pname"><code>image</code></strong> (<code class="link">dict</code>) - the images of the artist in various sizes</li>
+        <li><strong class="pname"><code>streamable</code></strong> (<code class="link">bool</code>) - flag indicating if the artist is streamable from last.fm</li>
+        <li><strong class="pname"><code>stats</code></strong> (<a href="lastfm.stats.Stats-class.html" class="link">Stats</a>) - the artist statistics</li>
+        <li><strong class="pname"><code>similar</code></strong> (<code class="link">list</code> of <a 
+          href="lastfm.artist.Artist-class.html" class="link">Artist</a>) - artists similar to the provided artist</li>
+        <li><strong class="pname"><code>top_tags</code></strong> (<code class="link">list</code> of <a 
+          href="lastfm.tag.Tag-class.html" class="link">Tag</a>) - top tags for the artist</li>
+        <li><strong class="pname"><code>bio</code></strong> (<a href="lastfm.wiki.Wiki-class.html" class="link">Wiki</a>) - biography of the artist</li>
+        <li><strong class="pname"><code>subject</code></strong> (<a href="lastfm.user.User-class.html" class="link">User</a> OR <a
+          href="lastfm.artist.Artist-class.html" class="link">Artist</a> OR
+          <a href="lastfm.tag.Tag-class.html" class="link">Tag</a> OR <a 
+          href="lastfm.track.Track-class.html" class="link">Track</a> OR <a
+          href="lastfm.weeklychart.WeeklyChart-class.html" 
+          class="link">WeeklyChart</a>) - the subject to which this instance belongs to</li>
+    </ul></dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="lastfm.error.InvalidParametersError-class.html">InvalidParametersError</a></strong></code> - If an instance of <a href="lastfm.api.Api-class.html" 
+        class="link">Api</a> is not provided as the first parameter then an
+        Exception is raised.</li>
+    </ul></dd>
+    <dt>Overrides:
+        <a href="lastfm.mixins.taggable.Taggable-class.html#init">mixins.taggable.Taggable.init</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_similar"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_similar</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">limit</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="lastfm.artist-pysrc.html#Artist.get_similar">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get the artists similar to this artist.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>limit</code></strong> (<code class="link">int</code>) - the number of artists returned (optional)</li>
+    </ul></dd>
+    <dt>Returns: <code class="link">list</code> of <a 
+      href="lastfm.artist.Artist-class.html" class="link">Artist</a></dt>
+        <dd>artists similar to this artist</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_info"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_info</span>(<span class="sig-arg">api</span>,
+        <span class="sig-arg">artist</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">mbid</span>=<span class="sig-default">None</span>)</span>
+    <br /><em class="fname">Static Method</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="lastfm.artist-pysrc.html#Artist.get_info">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get the data for the artist.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>api</code></strong> (<a href="lastfm.api.Api-class.html" class="link">Api</a>) - an instance of <a href="lastfm.api.Api-class.html" 
+          class="link">Api</a></li>
+        <li><strong class="pname"><code>artist</code></strong> (<code class="link">str</code>) - the name of the artist</li>
+        <li><strong class="pname"><code>mbid</code></strong> (<code class="link">str</code>) - MBID of the artist</li>
+    </ul></dd>
+    <dt>Returns: <a href="lastfm.artist.Artist-class.html" class="link">Artist</a></dt>
+        <dd>an Artist object corresponding the provided artist name</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="lastfm.error.InvalidParametersError-class.html">lastfm.InvalidParametersError</a></strong></code> - Either artist or mbid parameter has to be provided. Otherwise 
+        exception is raised.</li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>Note:</strong>
+        Use the <a href="lastfm.api.Api-class.html#get_artist" 
+        class="link">Api.get_artist</a> method instead of using this method
+        directly.
+      </p>
+</div></td></tr></table>
+</div>
+<a name="_default_params"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_default_params</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">extra_params</span>=<span class="sig-default"><code class="variable-group">{</code><code class="variable-group">}</code></span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="lastfm.artist-pysrc.html#Artist._default_params">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="lastfm.mixins.taggable.Taggable-class.html#_default_params" onclick="show_private();">mixins.taggable.Taggable._default_params</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_search_yield_func"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_search_yield_func</span>(<span class="sig-arg">api</span>,
+        <span class="sig-arg">artist</span>)</span>
+    <br /><em class="fname">Static Method</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="lastfm.artist-pysrc.html#Artist._search_yield_func">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="lastfm.mixins.searchable.Searchable-class.html#_search_yield_func" onclick="show_private();">mixins.searchable.Searchable._search_yield_func</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__hash__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__hash__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Hashing function)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="lastfm.artist-pysrc.html#Artist.__hash__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>hash(x)</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__hash__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__repr__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__repr__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Representation operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="lastfm.artist-pysrc.html#Artist.__repr__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>repr(x)</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__repr__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== PROPERTY DETAILS ==================== -->
+<a name="section-PropertyDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Property Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-PropertyDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="name"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">name</h3>
+  <p>name of the artist</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.name(<span class="summary-sig-arg">self</span>)</span>
+        - name of the artist
+    </dd>
+    <dt>Type:</dt>
+      <dd><code class="link">str</code></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="mbid"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">mbid</h3>
+  <p>MBID of the artist</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.mbid(<span class="summary-sig-arg">self</span>)</span>
+        - MBID of the artist
+    </dd>
+    <dt>Type:</dt>
+      <dd><code class="link">str</code></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="url"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">url</h3>
+  <p>url of the artist's page</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.url(<span class="summary-sig-arg">self</span>)</span>
+        - url of the artist's page
+    </dd>
+    <dt>Type:</dt>
+      <dd><code class="link">str</code></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="image"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">image</h3>
+  <p>images of the artist</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.image(<span class="summary-sig-arg">self</span>)</span>
+        - images of the artist
+    </dd>
+    <dt>Type:</dt>
+      <dd><code class="link">dict</code></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="streamable"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">streamable</h3>
+  <p>is the artist streamable on last.fm</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.streamable(<span class="summary-sig-arg">self</span>)</span>
+        - is the artist streamable on last.fm
+    </dd>
+    <dt>Type:</dt>
+      <dd><code class="link">bool</code></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="stats"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">stats</h3>
+  <p>stats for the artist</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.stats(<span class="summary-sig-arg">self</span>)</span>
+        - stats for the artist
+    </dd>
+    <dt>Type:</dt>
+      <dd><a href="lastfm.stats.Stats-class.html" class="link">Stats</a></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="similar"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">similar</h3>
+  <p>artists similar to this artist</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.similar(<span class="summary-sig-arg">self</span>)</span>
+        - artists similar to this artist
+    </dd>
+    <dt>Type:</dt>
+      <dd><code class="link">list</code> of <a 
+      href="lastfm.artist.Artist-class.html" class="link">Artist</a></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="most_similar"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">most_similar</h3>
+  <p>artist most similar to this artist</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.wrapper(<span class="summary-sig-arg">ob</span>)</span>
+    </dd>
+    <dt>Type:</dt>
+      <dd><a href="lastfm.artist.Artist-class.html" class="link">Artist</a></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="top_tags"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">top_tags</h3>
+  <p>top tags for the artist</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.top_tags(<span class="summary-sig-arg">self</span>)</span>
+        - top tags for the artist
+    </dd>
+    <dt>Type:</dt>
+      <dd><code class="link">list</code> of <a href="lastfm.tag.Tag-class.html"
+      class="link">Tag</a></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="top_tag"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">top_tag</h3>
+  <p>top tag for the artist</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.wrapper(<span class="summary-sig-arg">ob</span>)</span>
+    </dd>
+    <dt>Type:</dt>
+      <dd><a href="lastfm.tag.Tag-class.html" class="link">Tag</a></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="bio"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">bio</h3>
+  <p>biography of the artist</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.bio(<span class="summary-sig-arg">self</span>)</span>
+        - biography of the artist
+    </dd>
+    <dt>Type:</dt>
+      <dd><a href="lastfm.wiki.Wiki-class.html" class="link">Wiki</a></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="events"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">events</h3>
+  <p>events for the artist</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.wrapper(<span class="summary-sig-arg">ob</span>)</span>
+    </dd>
+    <dt>Type:</dt>
+      <dd><a href="lastfm.lazylist-module.html#lazylist" 
+      class="link">lazylist</a> of <a href="lastfm.event.Event-class.html" 
+      class="link">Event</a></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="top_albums"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">top_albums</h3>
+  <p>top albums of the artist</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.wrapper(<span class="summary-sig-arg">ob</span>)</span>
+    </dd>
+    <dt>Type:</dt>
+      <dd><code class="link">list</code> of <a 
+      href="lastfm.album.Album-class.html" class="link">Album</a></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="top_album"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">top_album</h3>
+  <p>top album of the artist</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.wrapper(<span class="summary-sig-arg">ob</span>)</span>
+    </dd>
+    <dt>Type:</dt>
+      <dd><a href="lastfm.album.Album-class.html" class="link">Album</a></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="top_fans"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">top_fans</h3>
+  <p>top fans of the artist</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.wrapper(<span class="summary-sig-arg">ob</span>)</span>
+    </dd>
+    <dt>Type:</dt>
+      <dd><code class="link">list</code> of <a 
+      href="lastfm.user.User-class.html" class="link">User</a></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="top_fan"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">top_fan</h3>
+  <p>top fan of the artist</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.wrapper(<span class="summary-sig-arg">ob</span>)</span>
+    </dd>
+    <dt>Type:</dt>
+      <dd><a href="lastfm.user.User-class.html" class="link">User</a></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="top_tracks"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">top_tracks</h3>
+  <p>top tracks of the artist</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.wrapper(<span class="summary-sig-arg">ob</span>)</span>
+    </dd>
+    <dt>Type:</dt>
+      <dd><code class="link">list</code> of <a 
+      href="lastfm.track.Track-class.html" class="link">Track</a></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="top_track"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">top_track</h3>
+  <p>topmost track of the artist</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.wrapper(<span class="summary-sig-arg">ob</span>)</span>
+    </dd>
+    <dt>Type:</dt>
+      <dd><a href="lastfm.track.Track-class.html" class="link">Track</a></dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="lastfm-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://code.google.com/p/python-lastfm/">python-lastfm</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Mar 10 11:14:34 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

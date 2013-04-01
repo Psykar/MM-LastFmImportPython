@@ -178,7 +178,7 @@ class lastFmImport(object):
         else:
             if not options:
                 raise KeyError("Must run once interactively first.")
-        self.username = options['username']
+        self.username = options['username'].encode('ascii')
         self.update_played_times = options['update_played_times']
         
         options.close()
@@ -198,23 +198,32 @@ class lastFmImport(object):
             return
         
         try:
-            # XXX Find a nice number....
-            self.pool = ThreadPool(processes=10)
-            self.pool2 =  ThreadPool(processes=2)
+
             while not success:
+                # XXX Find a nice number....
+                self.pool = ThreadPool(processes=10)
+                self.pool2 =  ThreadPool(processes=2)
                 try:
                     if self.statusBar.Terminate:
                         raise ManualCancel(None,None)
                     lastFmCollection = self.getLastFmDetails()
+                # Some errors we want to re-raise as we finish here.
                 except lastfm.error.InvalidParametersError as e:
                     self.displayError(e)
                     return
+                except UnrecoverablePullError, e:
+                    logging.error("We got an exception: %s",
+                                    type(getattr(e, 'orig_exception','')))
+                    raise
                 except ManualCancel:
                     raise
                 except PullError, e:
-                    logging.warning("We got an exception: %s",  
+                    logging.warning("We got an exception: %s",
                                     type(getattr(e, 'orig_exception','')))
-                    pass
+                    # XXX Max retries
+                    # Kill the pool before retrying
+                    self.pool.terminate()
+                    self.pool2.terminate()
                 else:
                     success = True
         finally:
@@ -361,7 +370,8 @@ class lastFmImport(object):
         # writeback is required as we are using mutable objects inside the 
         # dict
         logging.debug('Reading existing cache from %s', path)
-        shelf = shelve.open(path, writeback=True)
+        shelf_container = shelve.open(path, writeback=True)
+        shelf = shelf_container.setdefault(self.username, {})
         earliest_date = shelf.get('earliest_date')
         latest_date = shelf.get('latest_date')
         
@@ -413,7 +423,7 @@ class lastFmImport(object):
         finally:
             shelf['earliest_date'] = earliest_date
             shelf['latest_date'] = latest_date
-            shelf.close() 
+            shelf_container.close()
 
         return retVal
 
@@ -454,7 +464,11 @@ class lastFmImport(object):
                 if self.statusBar.Terminate:
                     raise ManualCancel(None,None)
             numPages = numPagesResult.get()
+        except ExceptionWithDates:
+            raise
         except Exception, e:
+            logging.debug(
+                "Error with initial tracks... %s: %s" % (type(e), str(e)))
             raise PullError(None, None, e) 
         
         if numPages == 0:
@@ -477,30 +491,40 @@ class lastFmImport(object):
 
         tracksIter = self.pool.imap(getPage, range(1,numPages+1))
         latest_date = earliest_date = None
-        while True:
-            tracksResult = self.pool2.apply_async(tracksIter.next, [timeout])
-            while not tracksResult.ready():
-                time.sleep(0.5)
-                if self.statusBar.Terminate:
-                    raise ManualCancel(None,None)
-            try:
-                tracks = tracksResult.get()
-            except StopIteration:
-                break
-            except TimeoutError, e:
-                raise PullError(earliest_date, latest_date, e) 
-            statusBar.Increase()
-            statusBar.Text = "Loading page: %s / %s " \
-                % (statusBar.Value, statusBar.MaxValue)
-            for track in tracks: 
-                # Now append the details if this one isn't already in the list
-                details = trackDetails(track)
-                data.addTrack(details)
-                # Cache the earliest and the latest result dates
-                if latest_date is None or track.played_on_uts > latest_date:
-                    latest_date = track.played_on_uts
-                if earliest_date is None or track.played_on_uts < earliest_date:
-                    earliest_date = track.played_on_uts
+        try:
+            while True:
+                tracksResult = self.pool2.apply_async(tracksIter.next, [timeout])
+                while not tracksResult.ready():
+                    time.sleep(0.5)
+                    if self.statusBar.Terminate:
+                        raise ManualCancel(None,None)
+                try:
+                    tracks = tracksResult.get()
+                except StopIteration:
+                    break
+                except TimeoutError, e:
+                    logging.debug(
+                        "Timeout error on normal pages %s: %s" % (type(e), e))
+                    raise PullError(earliest_date, latest_date, e)
+                statusBar.Increase()
+                statusBar.Text = "Loading page: %s / %s " \
+                    % (statusBar.Value, statusBar.MaxValue)
+                for track in tracks:
+                    # Now append the details if this one isn't already in the list
+                    details = trackDetails(track)
+                    data.addTrack(details)
+                    # Cache the earliest and the latest result dates
+                    if latest_date is None or track.played_on_uts > latest_date:
+                        latest_date = track.played_on_uts
+                    if earliest_date is None or track.played_on_uts < earliest_date:
+                        earliest_date = track.played_on_uts
+        # If we get any kind of error we want to save where we're at still
+        except ExceptionWithDates:
+            raise
+        except Exception, e:
+            logging.debug("Exception here.... %s: %s" % (type(e), str(e)))
+            logging.debug(getattr(e, 'xml', ''))
+            raise PullError(earliest_date, latest_date, e)
         # The dict is updated in place, return the last played date
         return earliest_date, latest_date
 
@@ -512,6 +536,10 @@ class ExceptionWithDates(Exception):
 
         
 class PullError(ExceptionWithDates):
+    pass
+
+
+class UnrecoverablePullError(ExceptionWithDates):
     pass
 
 

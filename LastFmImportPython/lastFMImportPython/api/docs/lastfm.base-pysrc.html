@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>lastfm.base</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="lastfm-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://code.google.com/p/python-lastfm/">python-lastfm</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="lastfm-module.html">Package&nbsp;lastfm</a> ::
+        Module&nbsp;base
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="lastfm.base-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="lastfm.base-module.html" onclick="show_private();">Module lastfm.base</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/env python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-docstring">"""Module containting the base class for all the classes in this package"""</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">"Abhinav Sarkar &lt;abhinav@abhinavsarkar.net&gt;"</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-name">__version__</tt> <tt class="py-op">=</tt> <tt class="py-string">"0.2"</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-name">__license__</tt> <tt class="py-op">=</tt> <tt class="py-string">"GNU Lesser General Public License"</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"> </tt>
+<a name="LastfmBase"></a><div id="LastfmBase-def"><a name="L8"></a><tt class="py-lineno"> 8</tt> <a class="py-toggle" href="#" id="LastfmBase-toggle" onclick="return toggle('LastfmBase');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="lastfm.base.LastfmBase-class.html">LastfmBase</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LastfmBase-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="LastfmBase-expanded"><a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line">    <tt class="py-docstring">"""Base class for all the classes in this package"""</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"> </tt>
+<a name="LastfmBase.__gt__"></a><div id="LastfmBase.__gt__-def"><a name="L11"></a><tt class="py-lineno">11</tt> <a class="py-toggle" href="#" id="LastfmBase.__gt__-toggle" onclick="return toggle('LastfmBase.__gt__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="lastfm.base.LastfmBase-class.html#__gt__">__gt__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">other</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LastfmBase.__gt__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="LastfmBase.__gt__-expanded"><a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-keyword">not</tt> <tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Method lastfm.album.Album.__lt__()=lastfm.album.Album-class.html#__lt__,Method lastfm.artist.Artist.__lt__()=lastfm.artist.Artist-class.html#__lt__,Method lastfm.event.Event.__lt__()=lastfm.event.Event-class.html#__lt__,Method lastfm.geo.Country.__lt__()=lastfm.geo.Country-class.html#__lt__,Method lastfm.geo.Location.__lt__()=lastfm.geo.Location-class.html#__lt__,Method lastfm.group.Group.__lt__()=lastfm.group.Group-class.html#__lt__,Method lastfm.playlist.Playlist.__lt__()=lastfm.playlist.Playlist-class.html#__lt__,Method lastfm.shout.Shout.__lt__()=lastfm.shout.Shout-class.html#__lt__,Method lastfm.tag.Tag.__lt__()=lastfm.tag.Tag-class.html#__lt__,Method lastfm.track.Track.__lt__()=lastfm.track.Track-class.html#__lt__,Method lastfm.user.User.__lt__()=lastfm.user.User-class.html#__lt__,Method lastfm.venue.Venue.__lt__()=lastfm.venue.Venue-class.html#__lt__,Method lastfm.weeklychart.WeeklyChart.__lt__()=lastfm.weeklychart.WeeklyChart-class.html#__lt__"><a title="lastfm.album.Album.__lt__
+lastfm.artist.Artist.__lt__
+lastfm.event.Event.__lt__
+lastfm.geo.Country.__lt__
+lastfm.geo.Location.__lt__
+lastfm.group.Group.__lt__
+lastfm.playlist.Playlist.__lt__
+lastfm.shout.Shout.__lt__
+lastfm.tag.Tag.__lt__
+lastfm.track.Track.__lt__
+lastfm.user.User.__lt__
+lastfm.venue.Venue.__lt__
+lastfm.weeklychart.WeeklyChart.__lt__" class="py-name" href="#" onclick="return doclink('link-0', '__lt__', 'link-0');">__lt__</a></tt><tt class="py-op">(</tt><tt class="py-name">other</tt><tt class="py-op">)</tt> <tt class="py-keyword">or</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__eq</tt><tt class="py-op">(</tt><tt class="py-name">other</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"> </tt>
+<a name="LastfmBase.__ne__"></a><div id="LastfmBase.__ne__-def"><a name="L14"></a><tt class="py-lineno">14</tt> <a class="py-toggle" href="#" id="LastfmBase.__ne__-toggle" onclick="return toggle('LastfmBase.__ne__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="lastfm.base.LastfmBase-class.html#__ne__">__ne__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">other</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LastfmBase.__ne__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="LastfmBase.__ne__-expanded"><a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Method lastfm.album.Album.__eq__()=lastfm.album.Album-class.html#__eq__,Method lastfm.artist.Artist.__eq__()=lastfm.artist.Artist-class.html#__eq__,Method lastfm.event.Event.__eq__()=lastfm.event.Event-class.html#__eq__,Method lastfm.geo.Country.__eq__()=lastfm.geo.Country-class.html#__eq__,Method lastfm.geo.Location.__eq__()=lastfm.geo.Location-class.html#__eq__,Method lastfm.group.Group.__eq__()=lastfm.group.Group-class.html#__eq__,Method lastfm.playlist.Playlist.__eq__()=lastfm.playlist.Playlist-class.html#__eq__,Method lastfm.shout.Shout.__eq__()=lastfm.shout.Shout-class.html#__eq__,Method lastfm.tag.Tag.__eq__()=lastfm.tag.Tag-class.html#__eq__,Method lastfm.track.Track.__eq__()=lastfm.track.Track-class.html#__eq__,Method lastfm.user.User.__eq__()=lastfm.user.User-class.html#__eq__,Method lastfm.venue.Venue.__eq__()=lastfm.venue.Venue-class.html#__eq__,Method lastfm.weeklychart.WeeklyChart.__eq__()=lastfm.weeklychart.WeeklyChart-class.html#__eq__"><a title="lastfm.album.Album.__eq__
+lastfm.artist.Artist.__eq__
+lastfm.event.Event.__eq__
+lastfm.geo.Country.__eq__
+lastfm.geo.Location.__eq__
+lastfm.group.Group.__eq__
+lastfm.playlist.Playlist.__eq__
+lastfm.shout.Shout.__eq__
+lastfm.tag.Tag.__eq__
+lastfm.track.Track.__eq__
+lastfm.user.User.__eq__
+lastfm.venue.Venue.__eq__
+lastfm.weeklychart.WeeklyChart.__eq__" class="py-name" href="#" onclick="return doclink('link-1', '__eq__', 'link-1');">__eq__</a></tt><tt class="py-op">(</tt><tt class="py-name">other</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"> </tt>
+<a name="LastfmBase.__ge__"></a><div id="LastfmBase.__ge__-def"><a name="L17"></a><tt class="py-lineno">17</tt> <a class="py-toggle" href="#" id="LastfmBase.__ge__-toggle" onclick="return toggle('LastfmBase.__ge__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="lastfm.base.LastfmBase-class.html#__ge__">__ge__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">other</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LastfmBase.__ge__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="LastfmBase.__ge__-expanded"><a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-2" class="py-name"><a title="lastfm.album.Album.__lt__
+lastfm.artist.Artist.__lt__
+lastfm.event.Event.__lt__
+lastfm.geo.Country.__lt__
+lastfm.geo.Location.__lt__
+lastfm.group.Group.__lt__
+lastfm.playlist.Playlist.__lt__
+lastfm.shout.Shout.__lt__
+lastfm.tag.Tag.__lt__
+lastfm.track.Track.__lt__
+lastfm.user.User.__lt__
+lastfm.venue.Venue.__lt__
+lastfm.weeklychart.WeeklyChart.__lt__" class="py-name" href="#" onclick="return doclink('link-2', '__lt__', 'link-0');">__lt__</a></tt><tt class="py-op">(</tt><tt class="py-name">other</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"> </tt>
+<a name="LastfmBase.__le__"></a><div id="LastfmBase.__le__-def"><a name="L20"></a><tt class="py-lineno">20</tt> <a class="py-toggle" href="#" id="LastfmBase.__le__-toggle" onclick="return toggle('LastfmBase.__le__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="lastfm.base.LastfmBase-class.html#__le__">__le__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">other</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LastfmBase.__le__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="LastfmBase.__le__-expanded"><a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Method lastfm.base.LastfmBase.__gt__()=lastfm.base.LastfmBase-class.html#__gt__"><a title="lastfm.base.LastfmBase.__gt__" class="py-name" href="#" onclick="return doclink('link-3', '__gt__', 'link-3');">__gt__</a></tt><tt class="py-op">(</tt><tt class="py-name">other</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="lastfm-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://code.google.com/p/python-lastfm/">python-lastfm</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Mar 10 11:14:35 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
