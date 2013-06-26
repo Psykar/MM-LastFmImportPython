@@ -3,6 +3,7 @@ Mediamonkey LastFMImporter
 At this stage I no longer have the time/interest in maintaining this - as I don't use Mediamonkey myself any longer.
 If you need help in getting this running with python directly, or any help with dev'ing it further, feel free to open an issue.
 
+---
 
 This script sync's last.fm playcounts and last played dates into MM.
 It will find total playcounts of every track in your last.fm history, check if it is higher than the value in the database (for all tracks of that title/artist - even if multiples) and updates it if so.
